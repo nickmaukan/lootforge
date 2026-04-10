@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LootForge EC | Juguetes, Funkos, Legos y Coleccionables en Cuenca</title>
+    <meta name="description" content="Tienda de juguetes y coleccionables en Cuenca, Ecuador. Funkos, Legos, Pokémon, Marvel y más. Envío local.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --black: #0D0D0D; --gold: #D4AF37; --orange: #FF6B35; --white: #F5F5F5; --gray: #1A1A1A; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; background: var(--black); color: var(--white); line-height: 1.6; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 12px 0; background: rgba(13,13,13,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(212,175,55,0.2); }
+        .header-inner { display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-family: 'Russo One', sans-serif; font-size: 1.5rem; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .logo span { color: var(--gold); }
+        .logo-icon { width: 36px; height: 36px; background: linear-gradient(135deg, var(--gold), var(--orange)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+        .nav { display: flex; gap: 24px; }
+        .nav a { color: var(--white); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: color 0.2s; }
+        .nav a:hover { color: var(--gold); }
+        .btn-whatsapp { display: inline-flex; align-items: center; gap: 6px; background: #25D366; color: white; padding: 8px 16px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.2s; font-size: 0.85rem; }
+        .btn-whatsapp:hover { background: #128C7E; transform: translateY(-2px); }
+        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 70px; position: relative; overflow: hidden; background: linear-gradient(135deg, #0D0D0D 0%, #1A1A1A 50%, #0D0D0D 100%); }
+        .hero::before { content: ''; position: absolute; top: 0; right: 0; width: 600px; height: 600px; background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%); }
+        .hero::after { content: ''; position: absolute; bottom: -200px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, transparent 70%); }
+        .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(212,175,55,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.03) 1px, transparent 1px); background-size: 60px 60px; }
+        .hero-content { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+        .hero-text h1 { font-family: 'Russo One', sans-serif; font-size: 2.8rem; line-height: 1.1; margin-bottom: 20px; }
+        .hero-text h1 span { color: var(--gold); }
+        .hero-text p { font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 28px; max-width: 500px; }
+        .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+        .btn-primary { background: linear-gradient(135deg, var(--gold), var(--orange)); color: var(--black); padding: 12px 24px; border-radius: 8px; font-weight: 700; text-decoration: none; transition: all 0.2s; font-size: 0.9rem; }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(212,175,55,0.3); }
+        .btn-secondary { background: transparent; color: var(--white); border: 2px solid var(--gold); padding: 12px 24px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.2s; font-size: 0.9rem; }
+        .btn-secondary:hover { background: var(--gold); color: var(--black); }
+        .hero-stats { display: flex; gap: 30px; margin-top: 36px; }
+        .stat-value { font-family: 'Russo One', sans-serif; font-size: 1.8rem; color: var(--gold); }
+        .stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+        .hero-image { display: flex; justify-content: center; align-items: center; }
+        .hero-image img { width: 100%; max-width: 320px; border-radius: 16px; border: 2px solid var(--gold); }
+        .categories { padding: 50px 0; border-top: 1px solid rgba(212,175,55,0.1); }
+        .categories-scroll { display: flex; gap: 10px; overflow-x: auto; padding: 8px 0; }
+        .category-pill { display: flex; align-items: center; gap: 6px; padding: 10px 18px; background: var(--gray); border: 2px solid transparent; border-radius: 50px; font-weight: 600; font-size: 0.85rem; color: rgba(255,255,255,0.7); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+        .category-pill:hover, .category-pill.active { border-color: var(--gold); color: var(--gold); }
+        .category-pill.active { background: var(--gold); color: var(--black); }
+        .products { padding: 70px 0; }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-title { font-family: 'Russo One', sans-serif; font-size: 2rem; margin-bottom: 10px; }
+        .section-title span { color: var(--gold); }
+        .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .product-card { background: var(--gray); border-radius: 14px; overflow: hidden; border: 1px solid rgba(212,175,55,0.1); transition: all 0.3s; }
+        .product-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 16px 36px rgba(0,0,0,0.4); }
+        .product-image { aspect-ratio: 1; background: linear-gradient(135deg, #252525, #1A1A1A); display: flex; align-items: center; justify-content: center; padding: 16px; position: relative; flex-direction: column; }
+        .product-image .emoji { font-size: 3.5rem; }
+        .product-image img { width: 100%; max-width: 160px; height: auto; object-fit: contain; }
+        .product-badge { position: absolute; top: 10px; right: 10px; background: var(--orange); color: white; font-size: 0.65rem; font-weight: 700; padding: 4px 10px; border-radius: 5px; }
+        .product-info { padding: 14px; }
+        .product-name { font-weight: 600; font-size: 0.85rem; margin-bottom: 6px; line-height: 1.3; }
+        .product-origin { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
+        .product-price { font-family: 'Russo One', sans-serif; font-size: 1.1rem; color: var(--gold); }
+        .product-actions { margin-top: 10px; }
+        .btn-wa { display: block; width: 100%; background: #25D366; color: white; padding: 8px; border-radius: 6px; text-align: center; text-decoration: none; font-weight: 600; font-size: 0.8rem; transition: all 0.2s; }
+        .btn-wa:hover { background: #128C7E; }
+        .cta { padding: 70px 0; background: linear-gradient(135deg, var(--gold), var(--orange)); text-align: center; }
+        .cta h2 { font-family: 'Russo One', sans-serif; font-size: 2rem; color: var(--black); margin-bottom: 10px; }
+        .cta p { font-size: 1rem; color: rgba(0,0,0,0.7); margin-bottom: 24px; }
+        .btn-black { background: var(--black); color: var(--gold); padding: 12px 32px; border-radius: 8px; font-weight: 700; text-decoration: none; display: inline-block; transition: all 0.2s; }
+        .btn-black:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .contact { padding: 70px 0; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        .contact h2 { font-family: 'Russo One', sans-serif; font-size: 1.6rem; margin-bottom: 18px; }
+        .contact h2 span { color: var(--gold); }
+        .contact-item { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+        .contact-icon { width: 44px; height: 44px; background: var(--gold); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+        .contact-info h4 { font-weight: 600; margin-bottom: 2px; font-size: 0.9rem; }
+        .contact-info p { color: rgba(255,255,255,0.7); font-size: 0.85rem; }
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.4); transition: all 0.2s; z-index: 999; font-size: 1.4rem; }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        .footer { background: var(--gray); padding: 28px 0; text-align: center; border-top: 1px solid rgba(212,175,55,0.1); }
+        .footer p { color: rgba(255,255,255,0.5); font-size: 0.8rem; }
+        .footer span { color: var(--gold); }
+        @media (max-width: 1024px) { .hero-content { grid-template-columns: 1fr; text-align: center; } .hero-text h1 { font-size: 2.2rem; } .hero-text p { margin: 0 auto 20px; } .hero-buttons { justify-content: center; } .hero-stats { justify-content: center; } .hero-image { display: none; } .products-grid { grid-template-columns: repeat(2, 1fr); } .contact-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 640px) { .nav { display: none; } .hero-text h1 { font-size: 1.8rem; } .products-grid { grid-template-columns: 1fr; } .logo { font-size: 1.1rem; } .stat-value { font-size: 1.4rem; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <div class="logo-icon">⚒️</div>
+                    Loot<span>Forge</span> EC
+                </a>
+                <nav class="nav">
+                    <a href="#inicio">Inicio</a>
+                    <a href="#productos">Productos</a>
+                    <a href="#nosotros">Nosotros</a>
+                    <a href="#contacto">Contacto</a>
+                </nav>
+                <a href="https://wa.me/593998815416?text=Hola%2C%20vi%20sus%20productos%20en%20LootForge" class="btn-whatsapp" target="_blank">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+    <section class="hero" id="inicio">
+        <div class="hero-grid"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Forja Tu <span>Colección</span> de Juguetes y Coleccionables</h1>
+                    <p>En Cuenca, Ecuador. Funkos, Legos, Pokémon, Marvel y más. Cada pieza es un tesoro que espera ser descubierto.</p>
+                    <div class="hero-buttons">
+                        <a href="#productos" class="btn-primary">Ver Productos</a>
+                        <a href="#contacto" class="btn-secondary">Contactar</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat"><div class="stat-value">14+</div><div class="stat-label">Productos únicos</div></div>
+                        <div class="stat"><div class="stat-value">100%</div><div class="stat-label">Originales</div></div>
+                        <div class="stat"><div class="stat-value">Cuenca</div><div class="stat-label">Entregas locales</div></div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=500&fit=crop" alt="Colección de juguetes">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="categories">
+        <div class="container">
+            <div class="categories-scroll">
+                <button class="category-pill active" data-category="all">Todos</button>
+                <button class="category-pill" data-category="funko">Funkos</button>
+                <button class="category-pill" data-category="lego">Legos</button>
+                <button class="category-pill" data-category="pokemon">Pokémon</button>
+                <button class="category-pill" data-category="marvel">Marvel</button>
+                <button class="category-pill" data-category="armables">Armables</button>
+            </div>
+        </div>
+    </section>
+    <section class="products" id="productos">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestros <span>Productos</span></h2>
+                <p style="color:rgba(255,255,255,0.6);">Piezas únicas para coleccionistas verdaderos</p>
+            </div>
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+    </section>
+    <section class="cta" id="nosotros">
+        <div class="container">
+            <h2>¿No encuentras lo que buscas?</h2>
+            <p>Escríbenos por WhatsApp y te ayudamos a encontrar tu tesoro.</p>
+            <a href="https://wa.me/593998815416?text=Hola%2C%20estoy%20buscando%20un%20producto%20específico" class="btn-black" target="_blank">Buscar en WhatsApp →</a>
+        </div>
+    </section>
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="contact-grid">
+                <div>
+                    <h2>Forja Tu <span>Colección</span> Hoy</h2>
+                    <p style="color:rgba(255,255,255,0.7);margin-bottom:24px;">Contáctanos por WhatsApp para reservar o comprar. Entregas en Cuenca.</p>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-info"><h4>Ubicación</h4><p>Cuenca, Ecuador</p></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">⏰</div>
+                        <div class="contact-info"><h4>Horario</h4><p>Lunes a Sábado: 9am - 7pm</p></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-info"><h4>WhatsApp</h4><p>+593 99 881 5416</p></div>
+                    </div>
+                </div>
+                <div style="background:var(--gray);border-radius:16px;padding:32px;border:1px solid rgba(212,175,55,0.2);text-align:center;">
+                    <h3 style="font-family:'Russo One',sans-serif;margin-bottom:12px;color:var(--gold);">Escríbenos directo</h3>
+                    <p style="color:rgba(255,255,255,0.7);margin-bottom:16px;font-size:0.9rem;">Respuesta inmediata por WhatsApp</p>
+                    <a href="https://wa.me/593998815416?text=Hola%20LootForge%2C%20vi%20su%20catálogo%20y%20me%20interesan%20sus%20productos" class="btn-whatsapp" target="_blank" style="font-size:0.9rem;padding:12px 24px;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Contactar por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 <span>LootForge EC</span> — Forjando colecciones en Cuenca, Ecuador</p>
+        </div>
+    </footer>
+    <a href="https://wa.me/593998815416" class="whatsapp-float" target="_blank">💬</a>
+    <script>
+        const products = [
+            { id: 1, name: 'Funko Pop! Goku Super Saiyan #948', price: 14.50, category: 'funko', emoji: '💥', origin: 'Funko · Dragon Ball Z · 4" altura' },
+            { id: 2, name: 'Lego Pokemon Pikachu Set', price: 30, category: 'lego', emoji: '🧱', origin: 'LEGO · Pokémon · 150+ piezas' },
+            { id: 3, name: 'Lego Pokemon Eevee Set', price: 31, category: 'lego', emoji: '🧱', origin: 'LEGO · Pokémon · 140+ piezas' },
+            { id: 4, name: 'Lego Pokemon Squirtle Set', price: 29, category: 'lego', emoji: '🧱', origin: 'LEGO · Pokémon · 130+ piezas' },
+            { id: 5, name: 'Charizard Mega Kit Armable', price: 29, category: 'pokemon', emoji: '🔥', origin: 'Bandai · Pokémon · 18cm altura' },
+            { id: 6, name: 'Árbol Pokémon Otoño con Eevee', price: 25, category: 'pokemon', emoji: '🍂', origin: 'Geschenk · Decoración Colección' },
+            { id: 7, name: 'Pokemon Piplup Kit Bandai', price: 20, category: 'pokemon', emoji: '🐧', origin: 'Bandai Spirits · 14cm altura' },
+            { id: 8, name: 'Pokemon Eevee Kit Bandai', price: 19, category: 'pokemon', emoji: '🐕', origin: 'Bandai Spirits · 13cm altura' },
+            { id: 9, name: 'Pokemon Mew Kit Bandai', price: 19, category: 'pokemon', emoji: '🔮', origin: 'Bandai Spirits · 14cm altura' },
+            { id: 10, name: 'Pokemon Pikachu Kit Bandai', price: 19, category: 'pokemon', emoji: '⚡', origin: 'Bandai Spirits · 12cm altura' },
+            { id: 11, name: 'Spiderman Figura Armable 82 piezas', price: 20, category: 'marvel', emoji: '🕷️', origin: 'Marvel · 20cm altura' },
+            { id: 12, name: 'Busto Spiderman con Base', price: 11.50, category: 'marvel', emoji: '🕸️', origin: 'Marvel · Colección' },
+            { id: 13, name: 'Super Mario Bros Movie Auto', price: 20, category: 'armables', emoji: '🏎️', origin: 'Spin Master · 6+ años' },
+            { id: 14, name: 'Peppa Pig Acuario Sellado', price: 12, category: 'armables', emoji: '🐷', origin: 'Hasbro · Aqua Frog Playset' }
+        ];
+        function renderProducts(filter = 'all') {
+            const grid = document.getElementById('productsGrid');
+            let filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+            grid.innerHTML = filtered.map(p => '<div class="product-card"><div class="product-image"><span class="product-badge">Nuevo</span><div class="emoji">' + p.emoji + '</div></div><div class="product-info"><h3 class="product-name">' + p.name + '</h3><p class="product-origin">' + p.origin + '</p><div class="product-price">$' + p.price.toFixed(2) + '</div><div class="product-actions"><a href="https://wa.me/593998815416?text=Hola%2C%20me%20interesa%3A%20' + encodeURIComponent(p.name) + '%20-%20%24' + p.price + '" class="btn-wa" target="_blank">Reservar →</a></div></div></div>').join('');
+        }
+        document.querySelectorAll('.category-pill').forEach(pill => {
+            pill.addEventListener('click', () => {
+                document.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                renderProducts(pill.dataset.category);
+            });
+        });
+        renderProducts();
+    </script>
+</body>
+</html>
