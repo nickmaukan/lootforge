@@ -197,24 +197,24 @@
     <script>
         const products = [
             // Funkos
-            { id: 1, name: 'Funko Pop! Goku Super Saiyan #1286', price: 14.50, category: 'funko', image: 'https://images-na.ssl-images-amazon.com/images/I/71MZoOVJLaL._AC_SL1500_.jpg', origin: 'Funko · Dragon Ball Z · 4" altura' },
+            { id: 1, name: 'Funko Pop! Goku Super Saiyan #1286', price: 14.50, category: 'funko', image: 'images/funko-goku-ss.jpg', origin: 'Funko · Dragon Ball Z · 4" altura' },
             // Legos
-            { id: 2, name: 'Lego Pokemon Pikachu Set', price: 30, category: 'lego', image: 'https://images-na.ssl-images-amazon.com/images/I/818Pv6hitpL._AC_SL1500_.jpg', origin: 'Mega Construx · Pokémon · 150+ piezas' },
-            { id: 3, name: 'Lego Pokemon Eevee Set', price: 31, category: 'lego', image: 'https://www.maziply.com/cdn/shop/files/mega-construx-pokemon-every-eevee-evolution-470-piece-building-set-packaging.jpg?v=1690745035', origin: 'Mega Construx · Pokémon · 140+ piezas' },
-            { id: 4, name: 'Lego Pokemon Squirtle Set', price: 29, category: 'lego', image: 'https://images-na.ssl-images-amazon.com/images/I/81OYSyJGAkL._AC_UL960_QL65_.jpg', origin: 'Mega Construx · Pokémon · 130+ piezas' },
+            { id: 2, name: 'Lego Pokemon Pikachu Set', price: 30, category: 'lego', image: 'images/lego-pikachu.jpg', origin: 'Mega Construx · Pokémon · 150+ piezas' },
+            { id: 3, name: 'Lego Pokemon Eevee Set', price: 31, category: 'lego', image: 'images/mega-eevee-box.jpg', origin: 'Mega Construx · Pokémon · 140+ piezas' },
+            { id: 4, name: 'Lego Pokemon Squirtle Set', price: 29, category: 'lego', image: 'images/mega-squirtle-1.jpg', origin: 'Mega Construx · Pokémon · 130+ piezas' },
             // Pokémon
-            { id: 5, name: 'Charizard Mega Kit Armable', price: 29, category: 'pokemon', image: 'https://m.media-amazon.com/images/I/81vTDE9gaBL._AC_SL1500_.jpg', origin: 'Mega Construx · Pokémon · 18cm altura' },
-            { id: 6, name: 'Árbol Pokémon Otoño con Eevee', price: 25, category: 'pokemon', image: 'https://m.media-amazon.com/images/I/61Se+h6TQKL._AC_SL1348_.jpg', origin: 'Geschenk · Decoración Colección' },
-            { id: 7, name: 'Pokemon Piplup Kit Bandai', price: 20, category: 'pokemon', image: 'https://venturetradeco.com/wp-content/uploads/2024/02/Piplup-Pokemon-Model-Kit-%E2%80%93-Bandai-Quick-Kit.png', origin: 'Bandai Spirits · 14cm altura' },
-            { id: 8, name: 'Pokemon Eevee Kit Bandai', price: 19, category: 'pokemon', image: 'https://m.media-amazon.com/images/I/61Se+h6TQKL._AC_SL1348_.jpg', origin: 'Bandai Spirits · 13cm altura' },
-            { id: 9, name: 'Pokemon Mew Kit Bandai', price: 19, category: 'pokemon', image: 'https://m.media-amazon.com/images/I/51eYqzL74NL._AC_SL1416_.jpg', origin: 'Bandai Spirits · 14cm altura' },
-            { id: 10, name: 'Pokemon Pikachu Kit Bandai', price: 19, category: 'pokemon', image: 'https://m.media-amazon.com/images/I/81vTDE9gaBL._AC_SL1500_.jpg', origin: 'Bandai Spirits · 12cm altura' },
+            { id: 5, name: 'Charizard Mega Kit Armable', price: 29, category: 'pokemon', image: 'images/mega-charizard-1.jpg', origin: 'Mega Construx · Pokémon · 18cm altura' },
+            { id: 6, name: 'Árbol Pokémon Otoño con Eevee', price: 25, category: 'pokemon', image: 'images/eevee-kit.jpg', origin: 'Geschenk · Decoración Colección' },
+            { id: 7, name: 'Pokemon Piplup Kit Bandai', price: 20, category: 'pokemon', image: 'images/bandai-piplup-kit.jpg', origin: 'Bandai Spirits · 14cm altura' },
+            { id: 8, name: 'Pokemon Eevee Kit Bandai', price: 19, category: 'pokemon', image: 'images/bandai-eevee-kit-box.jpg', origin: 'Bandai Spirits · 13cm altura' },
+            { id: 9, name: 'Pokemon Mew Kit Bandai', price: 19, category: 'pokemon', image: 'images/bandai-mew-kit.jpg', origin: 'Bandai Spirits · 14cm altura' },
+            { id: 10, name: 'Pokemon Pikachu Kit Bandai', price: 19, category: 'pokemon', image: 'images/bandai-pikachu-kit.jpg', origin: 'Bandai Spirits · 12cm altura' },
             // Marvel
-            { id: 11, name: 'Spiderman Figura Armable 82 piezas', price: 20, category: 'marvel', image: 'https://detqhtv6m6lzl.cloudfront.net/HCLContenido/producto/FullImage/EC-673419391009-3.jpg', origin: 'Marvel · 20cm altura' },
-            { id: 12, name: 'Busto Spiderman con Base', price: 11.50, category: 'marvel', image: 'https://m.media-amazon.com/images/I/91nd7bysLyL.jpg', origin: 'Marvel · Colección' },
+            { id: 11, name: 'Spiderman Figura Armable 82 piezas', price: 20, category: 'marvel', image: 'images/spiderman-armable-1.jpg', origin: 'Marvel · 20cm altura' },
+            { id: 12, name: 'Busto Spiderman con Base', price: 11.50, category: 'marvel', image: 'images/spiderman-busto-1.jpg', origin: 'Marvel · Colección' },
             // Armables
-            { id: 13, name: 'Juguete Súper Mario Bros Movie Auto', price: 20, category: 'armables', image: 'images/mario-fallback.jpg', origin: 'Spin Master · 6+ años' },
-            { id: 14, name: 'Pepa Pig Acuario Sellado', price: 12, category: 'armables', image: 'images/pepa-fallback.jpg', origin: 'Hasbro · Aqua Frog Playset' }
+            { id: 13, name: 'Juguete Súper Mario Bros Movie Auto', price: 20, category: 'armables', image: '', origin: 'Spin Master · 6+ años' },
+            { id: 14, name: 'Pepa Pig Acuario Sellado', price: 12, category: 'armables', image: '', origin: 'Hasbro · Aqua Frog Playset' }
         ];
         function renderProducts(filter = 'all') {
             const grid = document.getElementById('productsGrid');
