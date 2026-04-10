@@ -54,8 +54,7 @@
         .products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
         .product-card { background: var(--gray); border-radius: 14px; overflow: hidden; border: 1px solid rgba(212,175,55,0.1); transition: all 0.3s; }
         .product-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 16px 36px rgba(0,0,0,0.4); }
-        .product-image { aspect-ratio: 1; background: linear-gradient(135deg, #252525, #1A1A1A); display: flex; align-items: center; justify-content: center; padding: 16px; position: relative; flex-direction: column; }
-        .product-image .emoji { font-size: 3.5rem; }
+        .product-image { aspect-ratio: 1; background: linear-gradient(135deg, #252525, #1A1A1A); display: flex; align-items: center; justify-content: center; padding: 12px; position: relative; }
         .product-image img { width: 100%; max-width: 160px; height: auto; object-fit: contain; }
         .product-badge { position: absolute; top: 10px; right: 10px; background: var(--orange); color: white; font-size: 0.65rem; font-weight: 700; padding: 4px 10px; border-radius: 5px; }
         .product-info { padding: 14px; }
@@ -197,25 +196,29 @@
     <a href="https://wa.me/593998815416" class="whatsapp-float" target="_blank">💬</a>
     <script>
         const products = [
-            { id: 1, name: 'Funko Pop! Goku Super Saiyan #948', price: 14.50, category: 'funko', emoji: '💥', origin: 'Funko · Dragon Ball Z · 4" altura' },
-            { id: 2, name: 'Lego Pokemon Pikachu Set', price: 30, category: 'lego', emoji: '🧱', origin: 'LEGO · Pokémon · 150+ piezas' },
-            { id: 3, name: 'Lego Pokemon Eevee Set', price: 31, category: 'lego', emoji: '🧱', origin: 'LEGO · Pokémon · 140+ piezas' },
-            { id: 4, name: 'Lego Pokemon Squirtle Set', price: 29, category: 'lego', emoji: '🧱', origin: 'LEGO · Pokémon · 130+ piezas' },
-            { id: 5, name: 'Charizard Mega Kit Armable', price: 29, category: 'pokemon', emoji: '🔥', origin: 'Bandai · Pokémon · 18cm altura' },
-            { id: 6, name: 'Árbol Pokémon Otoño con Eevee', price: 25, category: 'pokemon', emoji: '🍂', origin: 'Geschenk · Decoración Colección' },
-            { id: 7, name: 'Pokemon Piplup Kit Bandai', price: 20, category: 'pokemon', emoji: '🐧', origin: 'Bandai Spirits · 14cm altura' },
-            { id: 8, name: 'Pokemon Eevee Kit Bandai', price: 19, category: 'pokemon', emoji: '🐕', origin: 'Bandai Spirits · 13cm altura' },
-            { id: 9, name: 'Pokemon Mew Kit Bandai', price: 19, category: 'pokemon', emoji: '🔮', origin: 'Bandai Spirits · 14cm altura' },
-            { id: 10, name: 'Pokemon Pikachu Kit Bandai', price: 19, category: 'pokemon', emoji: '⚡', origin: 'Bandai Spirits · 12cm altura' },
-            { id: 11, name: 'Spiderman Figura Armable 82 piezas', price: 20, category: 'marvel', emoji: '🕷️', origin: 'Marvel · 20cm altura' },
-            { id: 12, name: 'Busto Spiderman con Base', price: 11.50, category: 'marvel', emoji: '🕸️', origin: 'Marvel · Colección' },
-            { id: 13, name: 'Super Mario Bros Movie Auto', price: 20, category: 'armables', emoji: '🏎️', origin: 'Spin Master · 6+ años' },
-            { id: 14, name: 'Peppa Pig Acuario Sellado', price: 12, category: 'armables', emoji: '🐷', origin: 'Hasbro · Aqua Frog Playset' }
+            { id: 1, name: 'Funko Pop! Goku Super Saiyan #948', price: 14.50, category: 'funko', image: 'https://m.media-amazon.com/images/I/71MZoOVJLaL._AC_SL1500_.jpg', origin: 'Funko · Dragon Ball Z · 4" altura' },
+            { id: 2, name: 'Lego Pokemon Pikachu Set', price: 30, category: 'lego', image: 'https://m.media-amazon.com/images/I/81OYSyJGAkL._AC_UL960_QL65_.jpg', origin: 'LEGO · Pokémon · 150+ piezas' },
+            { id: 3, name: 'Lego Pokemon Eevee Set', price: 31, category: 'lego', image: 'https://cdn.mos.cms.futurecdn.net/WpG74mdCXgVMx4MChYKDa6.jpg', origin: 'LEGO · Pokémon · 140+ piezas' },
+            { id: 4, name: 'Lego Pokemon Squirtle Set', price: 29, category: 'lego', image: 'https://m.media-amazon.com/images/I/81OYSyJGAkL._AC_UL960_QL65_.jpg', origin: 'LEGO · Pokémon · 130+ piezas' },
+            { id: 5, name: 'Charizard Mega Kit Armable', price: 29, category: 'pokemon', image: 'https://m.media-amazon.com/images/I/81PeQcycKXL._AC_SL1500_.jpg', origin: 'Bandai · Pokémon · 18cm altura' },
+            { id: 6, name: 'Árbol Pokémon Otoño con Eevee', price: 25, category: 'pokemon', image: 'https://m.media-amazon.com/images/I/61Se+h6TQKL._AC_SL1348_.jpg', origin: 'Geschenk · Decoración Colección' },
+            { id: 7, name: 'Pokemon Piplup Kit Bandai', price: 20, category: 'pokemon', image: 'https://venturetradeco.com/wp-content/uploads/2024/02/Piplup-Pokemon-Model-Kit-%E2%80%93-Bandai-Quick-Kit.png', origin: 'Bandai Spirits · 14cm altura' },
+            { id: 8, name: 'Pokemon Eevee Kit Bandai', price: 19, category: 'pokemon', image: 'https://m.media-amazon.com/images/I/61Se+h6TQKL._AC_SL1348_.jpg', origin: 'Bandai Spirits · 13cm altura' },
+            { id: 9, name: 'Pokemon Mew Kit Bandai', price: 19, category: 'pokemon', image: 'https://m.media-amazon.com/images/I/51eYqzL74NL._AC_SL1416_.jpg', origin: 'Bandai Spirits · 14cm altura' },
+            { id: 10, name: 'Pokemon Pikachu Kit Bandai', price: 19, category: 'pokemon', image: 'https://m.media-amazon.com/images/I/81PeQcycKXL._AC_SL1500_.jpg', origin: 'Bandai Spirits · 12cm altura' },
+            { id: 11, name: 'Spiderman Figura Armable 82 piezas', price: 20, category: 'marvel', image: 'https://detqhtv6m6lzl.cloudfront.net/HCLContenido/producto/FullImage/EC-673419391009-3.jpg', origin: 'Marvel · 20cm altura' },
+            { id: 12, name: 'Busto Spiderman con Base', price: 11.50, category: 'marvel', image: 'https://m.media-amazon.com/images/I/91nd7bysLyL.jpg', origin: 'Marvel · Colección' },
+            { id: 13, name: 'Super Mario Bros Movie Auto', price: 20, category: 'armables', image: 'images/mario-fallback.jpg', origin: 'Spin Master · 6+ años' },
+            { id: 14, name: 'Peppa Pig Acuario Sellado', price: 12, category: 'armables', image: 'images/pepa-fallback.jpg', origin: 'Hasbro · Aqua Frog Playset' }
         ];
         function renderProducts(filter = 'all') {
             const grid = document.getElementById('productsGrid');
             let filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
-            grid.innerHTML = filtered.map(p => '<div class="product-card"><div class="product-image"><span class="product-badge">Nuevo</span><div class="emoji">' + p.emoji + '</div></div><div class="product-info"><h3 class="product-name">' + p.name + '</h3><p class="product-origin">' + p.origin + '</p><div class="product-price">$' + p.price.toFixed(2) + '</div><div class="product-actions"><a href="https://wa.me/593998815416?text=Hola%2C%20me%20interesa%3A%20' + encodeURIComponent(p.name) + '%20-%20%24' + p.price + '" class="btn-wa" target="_blank">Reservar →</a></div></div></div>').join('');
+            grid.innerHTML = filtered.map(p => {
+                const fallback = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgZmlsbD0iIzNBM0EzQSI+PHJlY3Qgd2lkdGg9IjE1MCIgaGVpZ2h0PSIxNTAiIHg9IjI1IiB5PSIyNSIgZmlsbD0iIzJBMjQyRiIgcnVsZT0iZXZlbm9kZCIvPjx0ZXh0IHg9IjEwMCIgeT0iMTEwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiNEOUIxMzciIHRleHQtYW5jaG9yPSJtaWRkbGUiPkltYWdlbjwvdGV4dD48L3N2Zz4=';
+                const imgSrc = p.image.startsWith('http') ? p.image : fallback;
+                return '<div class="product-card"><div class="product-image"><span class="product-badge">Nuevo</span><img src="' + imgSrc + '" alt="' + p.name + '" onerror="this.src=\'' + fallback + '\'" style="object-fit:contain;width:100%;max-width:140px;"></div><div class="product-info"><h3 class="product-name">' + p.name + '</h3><p class="product-origin">' + p.origin + '</p><div class="product-price">$' + p.price.toFixed(2) + '</div><div class="product-actions"><a href="https://wa.me/593998815416?text=Hola%2C%20me%20interesa%3A%20' + encodeURIComponent(p.name) + '%20-%20%24' + p.price + '" class="btn-wa" target="_blank">Reservar →</a></div></div></div>';
+            }).join('');
         }
         document.querySelectorAll('.category-pill').forEach(pill => {
             pill.addEventListener('click', () => {
